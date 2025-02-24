@@ -35,4 +35,5 @@ Thumbs.db
 *.pem
 Makefile
 Dockerfile
-
+docker-compose.dev.yaml
+docker-compose.yaml

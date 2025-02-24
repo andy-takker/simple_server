@@ -1,3 +1,5 @@
+BEGIN;
+
 CREATE TABLE IF NOT EXISTS users (
 	id UUID PRIMARY KEY,
 	username VARCHAR(255) NOT NULL,
@@ -17,3 +19,5 @@ WHERE deleted_at IS NULL;
 CREATE UNIQUE INDEX IF NOT EXISTS idx_users_email_not_deleted
 ON users (email)
 WHERE deleted_at IS NULL;
+
+COMMIT;
