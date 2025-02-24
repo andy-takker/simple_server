@@ -30,10 +30,12 @@ func main() {
 
 	user_repo := user_repository.NewRepository(dbpool)
 	user_service := services.NewService(user_repo)
-	handler := handlers.NewUserHandler(user_service)
+	user_handler := handlers.NewUserHandler(user_service)
+	healthcheck_handler := handlers.NewHealthcheckHandler()
 
 	r := gin.Default()
-	handler.RegisterRoutes(r)
+	user_handler.RegisterRoutes(r)
+	healthcheck_handler.RegisterRoutes(r)
 
 	r.Run(":8000")
 }

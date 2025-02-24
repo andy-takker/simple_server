@@ -21,11 +21,11 @@ func NewUserHandler(service *services.UserService) *UserHandler {
 }
 
 func (h *UserHandler) RegisterRoutes(r *gin.Engine) {
-	r.POST("/users", h.CreateUser)
-	r.GET("/users", h.FetchUserList)
-	r.GET("/users/:id", h.FetchUserByID)
-	r.PUT("/users/:id", h.UpdateUserByID)
-	r.DELETE("/users/:id", h.DeleteUserByID)
+	r.POST("/api/v1/users", h.CreateUser)
+	r.GET("/api/v1/users", h.FetchUserList)
+	r.GET("/api/v1/users/:id", h.FetchUserByID)
+	r.PUT("/api/v1/users/:id", h.UpdateUserByID)
+	r.DELETE("/api/v1/users/:id", h.DeleteUserByID)
 }
 
 func (h *UserHandler) CreateUser(c *gin.Context) {
