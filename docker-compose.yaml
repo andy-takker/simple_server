@@ -19,7 +19,11 @@ services:
     image: andytakker/simple_server:latest
     command: "/app/migrate.bin"
     environment:
-      APP_DATABASE_DSN: postgres://${APP_DATABASE_USER}:${APP_DATABASE_PASSWORD}@db:5432/${APP_DATABASE_NAME}
+      APP_DATABASE_USER: ${APP_DATABASE_USER}
+      APP_DATABASE_PASSWORD: ${APP_DATABASE_PASSWORD}
+      APP_DATABASE_NAME: ${APP_DATABASE_NAME}
+      APP_DATABASE_HOST: db
+      APP_DATABASE_PORT: 5432
     depends_on:
       - db
     restart: on-failure
@@ -29,7 +33,12 @@ services:
     ports:
       - 8000:8000
     environment:
-      APP_DATABASE_DSN: postgres://${APP_DATABASE_USER}:${APP_DATABASE_PASSWORD}@db:5432/${APP_DATABASE_NAME}
+      GIN_MODE: release
+      APP_DATABASE_USER: ${APP_DATABASE_USER}
+      APP_DATABASE_PASSWORD: ${APP_DATABASE_PASSWORD}
+      APP_DATABASE_NAME: ${APP_DATABASE_NAME}
+      APP_DATABASE_HOST: db
+      APP_DATABASE_PORT: 5432
 
 volumes:
   pgdata:
